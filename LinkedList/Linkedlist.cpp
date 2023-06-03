@@ -5,6 +5,7 @@ using namespace std;
     Linkedlist::Linkedlist(){
         head = NULL;
         tail = NULL;
+        count = 0;
     }
     Linkedlist::Linkedlist(int elem){
         head = new Node();
@@ -17,7 +18,7 @@ using namespace std;
     void Linkedlist::insertAt(int elem, int pos){
         if(pos == 0){
             insertAtFront(elem);
-        }else if(pos > count){
+        }else if(pos >= count){
             insertAtEnd(elem);
         }else{
             Node *temp = head;
@@ -58,15 +59,20 @@ using namespace std;
         if(head == NULL){
             insertAtFront(elem);
         }else{
-            Node *temp = new Node;
-            temp->data = elem;
-            temp->next = NULL;
-            tail->next=temp;
-            tail=temp;
-            temp=NULL;
-            delete temp;
+            // Node *temp = new Node;
+            // temp->data = elem;
+            // temp->next = NULL;
+            // tail->next=temp;
+            // tail=temp;
+            // temp=NULL;
+            // delete temp;
+            tail->next = new Node();
+            tail->next->data = elem;
+            tail->next->next = NULL;
+            tail = tail-> next;
+            count++;
         }
-        count++;
+
 
     }
     int Linkedlist::removeAt(int pos){
@@ -126,6 +132,7 @@ using namespace std;
         }else{
             Node *temp1 = head;
             Node *temp2 = tail;
+            cout << "Tail Data: " << temp2->data << endl;
             while(temp1->next != tail){
                 temp1 = temp1->next;
                 }
@@ -134,6 +141,7 @@ using namespace std;
               delete temp2;
               temp1 = NULL;
               delete temp1;
+              count--;
             }
         return elem;
         }
@@ -153,7 +161,6 @@ using namespace std;
                     pos++;
                 }
             }
-            cout << "Element was not found in list." << endl;
         }
         return -1;
     }
@@ -169,8 +176,12 @@ using namespace std;
                 cout << "]->";
                 temp=temp->next;
             }
+            cout <<"x";
             cout << endl;
+
+            cout << "Tail: " << tail->data << endl;
         }
+
     }
     int Linkedlist:: getListLength(){
         return count;

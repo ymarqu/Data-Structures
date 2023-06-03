@@ -28,6 +28,7 @@ class Linkedlist{
     int search(int elem);
     void printList();
     int getListLength();
+    void emptyList();
 
 };
 
