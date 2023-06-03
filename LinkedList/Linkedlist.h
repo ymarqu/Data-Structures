@@ -10,21 +10,24 @@ class Node{
 class Linkedlist{
 
     private:
-    Node* Head, Tail;
+    Node *head, *tail;
 
     private:
-    int listLenght;
-    bool isEmpty;
+    int count;
+    bool isEmpty();
 
     public:
+    Linkedlist();
+    Linkedlist(int elem);
     void insertAt(int elem, int pos);
     void insertAtFront(int elem);
     void insertAtEnd(int elem);
     int removeAt(int pos);
     int removeFromHead();
     int removeFromTail();
-    int search();
+    int search(int elem);
     void printList();
+    int getListLength();
 
 };
 
