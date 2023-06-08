@@ -17,6 +17,7 @@
        tail = head;
    }else{
     head->prev = new DLLNode;
+    head->prev->data = elem;
     head->prev->next = head;
     head = head->prev;
    }
@@ -57,6 +58,7 @@
        tail->next = new DLLNode;
        tail->next->prev = tail;
        tail = tail->next;
+       tail->data = elem;
     }
     count++;
    }
@@ -150,10 +152,11 @@
             cout << "List is empty. Cannot print." << endl;
         }else{
             DLLNode *temp = head;
+            cout << "x<=>";
             while(temp != NULL){
                 cout << "[";
                 cout << temp->data;
-                cout <<"]->";
+                cout <<"]<=>";
                 temp = temp->next;
             }
             cout << "x" << endl;
@@ -166,10 +169,12 @@
             cout << "List is empty. Cannot print." << endl;
         }else{
             DLLNode *temp = tail;
+            cout << "x<=>";
             while(temp != NULL){
+
                 cout << "[";
                 cout << temp->data;
-                cout << "]->";
+                cout << "]=>";
                 temp = temp->prev;
             }
             cout << "x" << endl;\
