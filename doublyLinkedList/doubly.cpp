@@ -2,12 +2,15 @@
    using namespace std;
    #include "doubly.h"
 
-
+    //constructor function set head and tail to NULL and count = 0 because list empty
    doublyLinkedList::doublyLinkedList(){
     head = NULL;
     tail = NULL;
     count = 0;
    }
+
+   //Insert new node at the front of list if list empty
+   //create a new node and set tail and head equal to new node.
    void doublyLinkedList::insertAtFront(int elem){
     if(head == NULL){
        head = new DLLNode;
@@ -23,6 +26,8 @@
    }
     count++;
    }
+   //insert new node at postion porvided by user. If position is out
+   //of range then print error message to screen
     void doublyLinkedList::insertAtpos(int pos, int elem){
         if(isEmpty()){
             insertAtFront(elem);
@@ -47,6 +52,8 @@
             count++;
         }
     }
+    //insert new node to the tail of the list.
+    //if list is empty create new node and set head and tail equal to new node
     void doublyLinkedList::insertAtTail(int elem){
     if(head == NULL){
        head = new DLLNode;
@@ -62,7 +69,7 @@
     }
     count++;
    }
-
+    //delete the node currently at head
     int doublyLinkedList::deleteFromHead(){
         if(isEmpty()){
             return -1;
@@ -82,6 +89,7 @@
         count--;
         return elem;
     }
+    //delete node that is currently at tail
     int doublyLinkedList::deleteFromTail(){
      if(isEmpty()){
         return -1;
@@ -101,6 +109,8 @@
         count--;
         return elem;
     }
+    //delete node at the postion provide by the user. If position is out
+    //of bounds error message is printed.
     int doublyLinkedList::deleteAtPos(int pos){
         int elem = -1;
         if(pos == 0){
@@ -129,6 +139,9 @@
        }
         return elem;
     }
+    //Search list for the element provided by the user
+    //if element is found in list return position. If element
+    // is not found return -1
     int doublyLinkedList::search(int elem){
 
         if(isEmpty()){
@@ -146,6 +159,7 @@
         }
         return -1;
     }
+    //print the list starting at head ending with tail
     void doublyLinkedList::printList(){
 
         if(isEmpty()){
@@ -164,6 +178,7 @@
             delete temp;
         }
     }
+    //print the list starting at tail and end with head
     void doublyLinkedList::printListReverse(){
         if(isEmpty()){
             cout << "List is empty. Cannot print." << endl;
@@ -182,6 +197,8 @@
             delete temp;
         }
     }
+
+    //utility function used to check current size of list
     bool doublyLinkedList::isEmpty(){
         if(count == 0){
             return true;
